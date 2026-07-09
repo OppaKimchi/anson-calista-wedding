@@ -1,5 +1,5 @@
-﻿:root {
-    --bg: #f5efe7;
+:root {
+    --bg: #435132;
     --surface: rgba(255, 255, 255, 0.86);
     --surface-strong: #ffffff;
     --text: #2d2223;
@@ -20,10 +20,7 @@ body {
     font-family: "Cormorant", Georgia, serif;
     color: var(--text);
     text-align: center;
-    background:
-        radial-gradient(circle at top left, rgba(67, 81, 50, 0.14), transparent 32%),
-        radial-gradient(circle at bottom right, rgba(160, 115, 87, 0.18), transparent 28%),
-        linear-gradient(180deg, #fffaf6 0%, var(--bg) 100%);
+    background: #435132;
 }
 
 body::before {
@@ -59,7 +56,6 @@ footer {
     color: #fffaf7;
     background: linear-gradient(145deg, rgba(40, 24, 22, 0.18), rgba(40, 24, 22, 0.34));
     border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 28px;
     box-shadow: var(--shadow);
     overflow: hidden;
 }
@@ -1158,5 +1154,3 @@ html[lang="km"] .info-list {
         font-size: 0.82rem;
     }
 }
-
-
