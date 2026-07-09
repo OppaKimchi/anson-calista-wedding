@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reception | Anson &amp; Calista</title>
+    <meta name="theme-color" content="#7a2230">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Battambang:wght@400;700&family=Gudea:wght@400;600;700&family=Cormorant:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #lang-toggle {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="hero hero-maroon">
+        <p class="eyebrow">Wedding Day</p>
+        <h1>Anson &amp; Calista</h1>
+        <p class="date">Saturday, 8 August 2026</p>
+        <p class="subtitle">A simple guide to our ceremony, canapés, and evening reception.</p>
+    </header>
+
+    <nav class="top-nav">
+        <a href="index.html" class="active"><i class="nav-icon">📍 </i><span>Schedule &amp; Venue</span></a>
+        <a href="seating.html"><i class="nav-icon">🪑</i><span data-i18n="nav-seating">Reception Seating</span></a>
+    </nav>
+
+    <main class="container flow-layout">
+        <section class="panel fade-in" style="--delay: 0s">
+            <div class="section-heading">
+                <h2>The Order of Events</h2>
+                <p>Everything you need for the day in one place.</p>
+            </div>
+
+            <div class="schedule-item">
+                <h3><span class="time-pill">14:15</span> Ceremony</h3>
+                <p><strong>Seated by 2:15 pm</strong></p>
+                <ul
+                    style="padding-left: 1.25rem; font-family: 'Gudea', sans-serif; font-size: 0.95rem; color: var(--muted); line-height: 1.65; margin-top: 0.5rem;">
+                    <li>The Processional</li>
+                    <li>Words of Welcome and Introduction</li>
+                    <li>Songs of Praise</li>
+                    <li>Prayer</li>
+                    <li>Bible Reading and Sermon</li>
+                    <li>Exchange of Vows and Rings</li>
+                    <li>Recessional</li>
+                    <li>Photos With Guests</li>
+                </ul>
+            </div>
+
+            <div class="schedule-item">
+                <h3><span class="time-pill">16:00</span> Canapé Hour</h3>
+                <p>Enjoy an hour of canapé and drinks in the sunset while the bridal party proceed with photo taking.
+                </p>
+            </div>
+
+            <div class="schedule-item">
+                <h3><span class="time-pill">17:00</span> Reception</h3>
+                <ul
+                    style="padding-left: 1.25rem; font-family: 'Gudea', sans-serif; font-size: 0.95rem; color: var(--muted); line-height: 1.65; margin-top: 0.5rem;">
+                    <li>Wedding Party Entrances</li>
+                    <li>Welcome Speech and Blessings</li>
+                    <li>Dinner</li>
+                    <li>First Dance</li>
+                    <li>Game</li>
+                    <li>Cake</li>
+                    <li>Party</li>
+                    <li>Farewell</li>
+                </ul>
+                <p style="margin-top: 0.5rem;">The evening will conclude at 22:00.</p>
+            </div>
+        </section>
+
+        <section class="panel venue-panel fade-in" style="--delay: 0.1s">
+            <div class="section-heading">
+                <h2>Venue, Maps &amp; Parking</h2>
+                <p>The ceremony and reception will be held all in the one venue.</p>
+            </div>
+
+            <div class="venue-grid">
+                <article class="venue-card">
+                    <p class="venue-label">Formal Attire</p>
+                    <h3>Burnham Estate</h3>
+                    <p>Cawdor Road, Cawdor NSW, Australia.</p>
+                    <ul class="info-list">
+                        <li><span>Map:</span> <a
+                                href="https://www.google.com/maps/place/Burnham+Estate/@-34.0811086,150.6763305,17z/data=!3m1!4b1!4m6!3m5!1s0x6b12fa01caa38a05:0xdce3cdbed5970e9a!8m2!3d-34.0811086!4d150.6763305!16s%2Fg%2F11bw5zt7sg?entry=ttu&g_ep=EgoyMDI2MDcwNi4wIKXMDSoASAFQAw%3D%3D"
+                                target="_blank" rel="noopener noreferrer">Open in Google Maps</a></li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span>Anson &amp; Calista Â· 8 August 2026 Â· Made with</span> <i class="footer-heart">â™¥</i>
+    </footer>
+
+    <script src="../translations.js"></script>
+    <script>
+        // â”€â”€ Scroll fade-in â”€â”€
+        (function () {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.08 });
+
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        })();
+    </script>
+</body>
+
+</html>

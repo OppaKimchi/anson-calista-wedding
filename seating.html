@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<!-- The language is set to English -->
+<html lang="en">
+
+<head>
+    <!-- Character encoding for the document to support all text characters -->
+    <meta charset="UTF-8">
+    <!-- Make the page responsive on mobile devices so it scales correctly -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the page shown in the browser tab -->
+    <title>Reception Seating | Anson &amp; Calista</title>
+    <!-- Theme color for mobile browsers (changes the top bar color on some phones) -->
+    <meta name="theme-color" content="#7a2230">
+    
+    <!-- Preconnect to Google Fonts for faster loading of typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Load custom fonts (Battambang, Inter, Playfair Display) from Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Battambang:wght@400;700&family=Gudea:wght@400;700&family=Cormorant:wght@400;700&display=swap"
+        rel="stylesheet">
+        
+    <!-- Link to our custom CSS stylesheet for styling the page -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Inline CSS to hide the language toggle button because we only need English here -->
+    <style>
+        #lang-toggle {
+            display: none !important; /* Forces the button to be hidden completely */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero section displaying the main title of the page -->
+    <header class="hero hero-maroon">
+        <!-- Small text above the main title (the eyebrow text) -->
+        <p class="eyebrow">Reception Seating</p>
+        <!-- The main heading with the venue name -->
+        <h1>Burnham Estate</h1>
+        <!-- Secondary text instructing the user what to do -->
+        <p class="date">Find Your Seat</p>
+        <!-- A small subtitle explaining the search feature below -->
+        <p class="subtitle">Search by first or last name to see your table.</p>
+    </header>
+
+    <!-- Navigation bar to move between pages on the site -->
+    <nav class="top-nav">
+        <!-- Link to the schedule and venue page -->
+        <a href="index.html"><i class="nav-icon">📍 </i><span>Schedule &amp; Venue</span></a>
+        <!-- Link to the seating page (this page, so it is marked as active) -->
+        <a href="seating.html" class="active"><i class="nav-icon">🪑</i><span data-i18n="nav-seating">Reception
+                Seating</span></a>
+    </nav>
+
+    <!-- Main content area containing the search box and floor plan -->
+    <main class="container flow-layout">
+        <!-- Search panel section with a fade-in animation effect -->
+        <section class="panel guest-search-panel fade-in" style="--delay: 0s">
+            <!-- Heading area for the search section -->
+            <div class="section-heading">
+                <!-- Title for the search section -->
+                <h2 data-i18n="seating-section-title">Guest Search</h2>
+                <!-- Description for the search section to help users -->
+                <p data-i18n="seating-section-desc">Type your first or last name below to find your table.</p>
+            </div>
+
+            <!-- Label for the search input box (good for accessibility) -->
+            <label class="search-label" for="searchInput" data-i18n="seating-search-label">Search guest name</label>
+            <!-- The actual text input box where users type their name -->
+            <input type="text" id="searchInput" placeholder="Enter your name..."
+                data-i18n-placeholder="seating-search-placeholder">
+            <!-- A helpful hint for the user below the input -->
+            <p class="search-hint" data-i18n="seating-search-hint">Use at least two letters for the best result.</p>
+
+            <!-- This empty div is where the search results will appear via JavaScript -->
+            <div id="results" class="results-shell"></div>
+
+            <!-- Wrapper for the floor plan image, also fades in slightly delayed -->
+            <div class="floorplan-wrapper fade-in" style="margin-top: 3.5rem; text-align: center; --delay: 0.15s">
+                <!-- Title for the floor plan image -->
+                <h3
+                    style="font-family: 'Cormorant', Georgia, serif; color: var(--brand-dark); margin-bottom: 1.25rem; font-size: 1.5rem;">
+                    Reception Floor Plan</h3>
+                <!-- The floor plan image itself -->
+                <img src="images/floorplan.jpg" alt="Floor Plan"
+                    style="width: 100%; max-width: 800px; height: auto; border-radius: 16px; box-shadow: 0 16px 36px rgba(0,0,0,0.08); border: 1px solid var(--border);">
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer section with the date and a heart icon -->
+    <footer>
+        <span>Anson &amp; Calista Â· 8 August 2026 Â· Made with</span> <i class="footer-heart">â™¥</i>
+    </footer>
+
+    <!-- Load the translations JavaScript file (used for multi-language support if needed) -->
+    <script src="../translations.js"></script>
+    
+    <!-- Custom JavaScript for the seating search functionality -->
+    <script>
+        // Array of objects containing table names and their respective guests
+        const seatingData = [
+            { table: "Table 1", guests: ["Rodney Chiu", "Melissa Tan", "Zack Chiu", "Fetz Foo", "Feliz Foo", "Rina Tan", "Lee", "Florence Tan", "Bec Hardman", "Jenny Tan"] },
+            { table: "Table 2", guests: ["Mum", "Grandma", "Carmen Nguyen", "Ma Nina Ortega", "Hilda Chow", "Catherine Wong", "Uncle Ma", "Vitou Seng", "Jenny Voller", "Geoff Voller"] },
+            { table: "Table 3", guests: ["Julia Cheam", "Hui Ren Tan", "Adeline Yap", "Dan Yao", "Denise Foo", "Josie Goh", "Nicole Tan", "Sarah Maizura", "Chong Ler", "Ashley Lau"] },
+            { table: "Table 4", guests: ["Macy Voeung", "Judy Nguyen", "Sharon Luo", "Jun Hee Hong", "Louis Teoh", "Jess Truong", "Tim Truong", "Esther Tran", "Dan Tran", "Grace Leung"] },
+            { table: "Table 5", guests: ["Marshall Scott", "Julie Scott", "Woojin Yang", "Rachel Yang", "Rachel Tam", "Hamish Clark", "Mikey Wong", "Geoffrey Lu", "Andrew Wong", "Jeremy Wong"] },
+            { table: "Table 6", guests: ["Ryan Szeto", "Grace Szeto", "Brett Jackson", "Janette Jackson", "Paul Tam", "Vania Tam", "Benjamin Jiang", "Erica Jiang", "Thomas Chin", "Carol Chin"] },
+            { table: "Table 7", guests: ["Graham Bae", "Bora Bae", "Ethan Bae", "Ceewing Shen", "Joe Shen", "Sewlyn Chang", "Mady Chang", "Dan Au", "Fayette Au", "Bay Odontuyaa", "Emily Liu"] },
+            { table: "Table 8", guests: ["Will Yu", "Lydia Chung", "Bianca So", "Ian Chan", "Jeclyn Lim", "Aaron Lee", "Lilian Ly", "Hieu Ly", "Jono Vavouris", "Hannah Vavouris", "Lina Vavouris"] },
+            { table: "Table 9", guests: ["Nelson Cheng", "Peter Kim", "Adam Nelson", "Paul Chang", "Jacky Chen", "Jack Liang", "Samson Ng", "Mikkel Li", "Tim Lim", "Pearl Kim", "Ruby Lim"] }
+        ];
+
+        // Helper function to get a translated string based on a key from translations.js
+        function t(key) {
+            // Get the current language selected by the user
+            const lang = getLanguage();
+            // Look up the translation entry for the requested key
+            const entry = translations[key];
+            // If the entry doesn't exist, just return the key itself so it doesn't break
+            if (!entry) return key;
+            // Return the translated string for the current language, or English as a fallback
+            return entry[lang] || entry['en'];
+        }
+
+        // Function to highlight the searched text within a guest's name
+        function highlightMatch(name, query) {
+            // Find the starting position of the query in the name (ignoring case)
+            const idx = name.toLowerCase().indexOf(query);
+            // If the query is not found, return the original name
+            if (idx === -1) return name;
+            // Get the part of the name before the matched text
+            const before = name.slice(0, idx);
+            // Get the exact matched text from the name (this preserves the original uppercase/lowercase)
+            const match = name.slice(idx, idx + query.length);
+            // Get the part of the name after the matched text
+            const after = name.slice(idx + query.length);
+            // Return the name with the matched part wrapped in a <mark> tag for yellow highlighting
+            return `${before}<mark>${match}</mark>${after}`;
+        }
+
+        // Main function to handle searching for a guest when typing
+        function searchGuest() {
+            // Get the value typed in the search box, convert to lowercase, and remove extra spaces
+            const input = document.getElementById('searchInput').value.toLowerCase().trim();
+            // Get the div element where we will display the search results
+            const resultsDiv = document.getElementById('results');
+
+            // If the user typed less than 2 characters, show the default empty state message
+            if (input.length < 2) {
+                // Display the "seating-empty" message inside the results div
+                resultsDiv.innerHTML = `<p class="empty-state">${t('seating-empty')}</p>`;
+                // Stop the function from running further
+                return;
+            }
+
+            // Create an empty string to build our HTML results
+            let htmlString = '';
+
+            // Loop through each table in the seating data array
+            seatingData.forEach(tableGroup => {
+                // Find all guests at this table whose name includes the searched text
+                const matchedGuests = tableGroup.guests.filter(guest => guest.toLowerCase().includes(input));
+
+                // If we found any matches at this table
+                if (matchedGuests.length > 0) {
+                    // Loop through all guests at the table and apply highlighting to the matching ones
+                    const highlightedList = tableGroup.guests.map(guest => {
+                        // If this guest's name matches the search, highlight it
+                        if (guest.toLowerCase().includes(input)) {
+                            return highlightMatch(guest, input);
+                        }
+                        // Otherwise, return the name normally without highlighting
+                        return guest;
+                    }).join(', '); // Join the array of names into a single comma-separated string
+
+                    // Add a new result HTML block to our string for this table
+                    htmlString += `
+                        <div class="table-result">
+                            <!-- Display the table name (e.g. Table 1) -->
+                            <h3>${tableGroup.table}</h3>
+                            <!-- Display the list of guests at the table with highlighting -->
+                            <p><strong>${t('seating-guests-label')}</strong> ${highlightedList}</p>
+                        </div>
+                    `;
+                }
+            });
+
+            // If no matches were found after checking all tables
+            if (htmlString === '') {
+                // Display a "no results" message
+                resultsDiv.innerHTML = `<p class="empty-state">${t('seating-no-result')}</p>`;
+            } else {
+                // Otherwise, display the generated HTML results on the page
+                resultsDiv.innerHTML = htmlString;
+            }
+        }
+
+        // Get the search input element so we can listen for typing events
+        const searchInput = document.getElementById('searchInput');
+        // Get the results div so we can update it later
+        const resultsDiv = document.getElementById('results');
+
+        // When the page first loads, set the initial empty state message
+        document.addEventListener('DOMContentLoaded', () => {
+            // Put the empty message in the results container
+            resultsDiv.innerHTML = `<p class="empty-state">${t('seating-empty')}</p>`;
+        });
+
+        // Run the searchGuest function every time the user types something into the input box
+        searchInput.addEventListener('input', searchGuest);
+        
+        // When the user clicks into the search box, ensure the empty state is showing if there are no results yet
+        searchInput.addEventListener('focus', () => {
+            // If the results div is completely empty
+            if (!resultsDiv.innerHTML) {
+                // Show the empty state message
+                resultsDiv.innerHTML = `<p class="empty-state">${t('seating-empty')}</p>`;
+            }
+        });
+
+        // â”€â”€ Scroll fade-in â”€â”€
+        // This is an immediately invoked function expression (IIFE) for the fade-in effect on scroll
+        (function () {
+            // Create a new IntersectionObserver to detect when elements enter the screen
+            const observer = new IntersectionObserver((entries) => {
+                // Loop through all observed elements
+                entries.forEach(entry => {
+                    // If the element is currently visible on the screen
+                    if (entry.isIntersecting) {
+                        // Add the 'visible' CSS class to trigger the fade-in animation
+                        entry.target.classList.add('visible');
+                        // Stop observing this element so it only fades in once
+                        observer.unobserve(entry.target);
+                    }
+                });
+            // Trigger when 8% of the element is visible on screen
+            }, { threshold: 0.08 });
+
+            // Find all elements with the 'fade-in' class and tell the observer to watch them
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        })();
+    </script>
+</body>
+
+</html>
+
