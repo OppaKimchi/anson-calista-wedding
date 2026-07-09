@@ -83,16 +83,22 @@
                     style="font-family: 'Cormorant', Georgia, serif; color: var(--brand-dark); margin-bottom: 1.25rem; font-size: 1.5rem;">
                     Reception Floor Plan</h3>
                 <!-- The floor plan image itself -->
-                <img src="images/floorplan.jpg" alt="Floor Plan"
-                    style="width: 100%; max-width: 800px; height: auto; border-radius: 16px; box-shadow: 0 16px 36px rgba(0,0,0,0.08); border: 1px solid var(--border);">
+                <img src="images/floorplan.jpg" alt="Floor Plan" id="floorplanImg"
+                    style="width: 100%; max-width: 800px; height: auto; border-radius: 16px; box-shadow: 0 16px 36px rgba(0,0,0,0.08); border: 1px solid var(--border); cursor: zoom-in;">
             </div>
         </section>
     </main>
 
     <!-- Footer section with the date and a heart icon -->
     <footer>
-        <span>Anson &amp; Calista Â· 8 August 2026 Â· Made with</span> <i class="footer-heart">â™¥</i>
+        <span>Anson &amp; Calista &middot; 8 August 2026 &middot; Made with</span> <i class="footer-heart">&hearts;</i>
     </footer>
+
+    <!-- Lightbox for zooming images -->
+    <div id="lightbox" class="lightbox-overlay">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <img src="images/floorplan.jpg" alt="Floor Plan Zoomed">
+    </div>
 
     <!-- Load the translations JavaScript file (used for multi-language support if needed) -->
     <script src="../translations.js"></script>
@@ -219,6 +225,19 @@
                 resultsDiv.innerHTML = `<p class="empty-state">${t('seating-empty')}</p>`;
             }
         });
+
+        // Lightbox logic
+        const floorplanImg = document.getElementById('floorplanImg');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxClose = document.getElementById('lightboxClose');
+
+        if (floorplanImg && lightbox && lightboxClose) {
+            floorplanImg.addEventListener('click', () => lightbox.classList.add('open'));
+            lightbox.addEventListener('click', (e) => {
+                if (e.target !== lightbox.querySelector('img')) lightbox.classList.remove('open');
+            });
+            lightboxClose.addEventListener('click', () => lightbox.classList.remove('open'));
+        }
 
         // â”€â”€ Scroll fade-in â”€â”€
         // This is an immediately invoked function expression (IIFE) for the fade-in effect on scroll
