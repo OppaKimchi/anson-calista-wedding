@@ -8,7 +8,7 @@
     <!-- Make the page responsive on mobile devices so it scales correctly -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Title of the page shown in the browser tab -->
-    <title>Reception Seating | Anson &amp; Calista</title>
+    <title>canapé hour | Anson &amp; Calista</title>
     <!-- Theme color for mobile browsers (changes the top bar color on some phones) -->
     <meta name="theme-color" content="#7a2230">
     
@@ -37,7 +37,7 @@
         <!-- Small text above the main title (the eyebrow text) -->
         <p class="eyebrow">Reception Seating</p>
         <!-- The main heading with the venue name -->
-        <h1>Burnham Estate</h1>
+        <h1>The Wedding Banquet</h1>
         <!-- Secondary text instructing the user what to do -->
         <p class="date">Find Your Seat</p>
         <!-- A small subtitle explaining the search feature below -->
@@ -45,12 +45,9 @@
     </header>
 
     <!-- Navigation bar to move between pages on the site -->
-    <nav class="top-nav">
-        <!-- Link to the schedule and venue page -->
-        <a href="index.html"><i class="nav-icon">📍 </i><span>Schedule &amp; Venue</span></a>
-        <!-- Link to the seating page (this page, so it is marked as active) -->
-        <a href="seating.html" class="active"><i class="nav-icon">🪑</i><span data-i18n="nav-seating">Reception
-                Seating</span></a>
+    <nav class="mockup-nav">
+        <a href="index.html" class="btn-schedule">Schedule</a>
+        <a href="seating.html" class="btn-reception">Reception Seating</a>
     </nav>
 
     <!-- Main content area containing the search box and floor plan -->
@@ -76,16 +73,7 @@
             <!-- This empty div is where the search results will appear via JavaScript -->
             <div id="results" class="results-shell"></div>
 
-            <!-- Wrapper for the floor plan image, also fades in slightly delayed -->
-            <div class="floorplan-wrapper fade-in" style="margin-top: 3.5rem; text-align: center; --delay: 0.15s">
-                <!-- Title for the floor plan image -->
-                <h3
-                    style="font-family: 'Cormorant', Georgia, serif; color: var(--brand-dark); margin-bottom: 1.25rem; font-size: 1.5rem;">
-                    Reception Floor Plan</h3>
-                <!-- The floor plan image itself -->
-                <img src="images/floorplan.jpg" alt="Floor Plan" id="floorplanImg"
-                    style="width: 100%; max-width: 800px; height: auto; box-shadow: 0 16px 36px rgba(0,0,0,0.08); border: 1px solid var(--border); cursor: zoom-in;">
-            </div>
+
         </section>
     </main>
 
@@ -94,11 +82,7 @@
         <span>Anson &amp; Calista &middot; 8 August 2026 &middot; Made with</span> <i class="footer-heart">&hearts;</i>
     </footer>
 
-    <!-- Lightbox for zooming images -->
-    <div id="lightbox" class="lightbox-overlay">
-        <button class="lightbox-close" id="lightboxClose">&times;</button>
-        <img src="images/floorplan.jpg" alt="Floor Plan Zoomed">
-    </div>
+
 
     <!-- Load the translations JavaScript file (used for multi-language support if needed) -->
     <script src="../translations.js"></script>
@@ -226,18 +210,7 @@
             }
         });
 
-        // Lightbox logic
-        const floorplanImg = document.getElementById('floorplanImg');
-        const lightbox = document.getElementById('lightbox');
-        const lightboxClose = document.getElementById('lightboxClose');
 
-        if (floorplanImg && lightbox && lightboxClose) {
-            floorplanImg.addEventListener('click', () => lightbox.classList.add('open'));
-            lightbox.addEventListener('click', (e) => {
-                if (e.target !== lightbox.querySelector('img')) lightbox.classList.remove('open');
-            });
-            lightboxClose.addEventListener('click', () => lightbox.classList.remove('open'));
-        }
 
         // â”€â”€ Scroll fade-in â”€â”€
         // This is an immediately invoked function expression (IIFE) for the fade-in effect on scroll
