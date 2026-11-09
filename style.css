@@ -67,7 +67,7 @@ footer {
     justify-content: flex-start;
     background-image:
         linear-gradient(180deg, rgba(33, 18, 16, 0.08) 0%, rgba(33, 18, 16, 0.52) 100%),
-        url("../images/CarmenVitou39.JPG");
+        url("images/CarmenVitou39.JPG");
     background-size: cover;
     background-position: center center;
 }
@@ -1020,7 +1020,7 @@ footer .footer-heart {
         background-position: center top;
         background-image:
             linear-gradient(180deg, rgba(33, 18, 16, 0.12) 0%, rgba(33, 18, 16, 0.62) 100%),
-            url("../images/CarmenVitou39.JPG");
+            url("images/CarmenVitou39.JPG");
     }
 
     .hero-copy {
